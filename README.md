@@ -7,7 +7,7 @@
 **2. Install the first one**
 
 	helm install mywebapp-release webapp1/ --values webapp1/values.yaml
-  helm ls --all-namespace
+  	helm ls --all-namespace
 
 **3. Upgrade after templating**
 
@@ -36,9 +36,9 @@
 	helm uninstall mywebapp-release-prod -n prod
 
 
-Basic Commands for Helm
+**Basic Commands for Helm**
 
-1. Install Helm
+**1. Install Helm**
 
   curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
   sudo apt-get install apt-transport-https --yes
@@ -47,24 +47,24 @@ Basic Commands for Helm
   sudo apt-get install helm
   helm version
   
- 2. helm add repository and install prometheus helm chart
+ **2. helm add repository and install prometheus helm chart**
  
   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
   helm repo ls
   helm install my-prometheus prometheus-community/prometheus --version 25.27.0
   kubuctl get all
   
- 3. Check helm list
+ **3. Check helm list**
  
   helm ls --all-namespaces
   
- 4. access prometheus url
+ **4. access prometheus url**
  
   helm status my-prometheus
   export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=prometheus,app.kubernetes.io/instance=my-prometheus" -o jsonpath="{.items[0].metadata.name}")
   kubectl --namespace default port-forward $POD_NAME 9090
   
-5. Install helm on dev namespace
+**5. Install helm on dev namespace**
   
   helm ls --all-namespaces
   kubectl create namespace dev
@@ -72,24 +72,24 @@ Basic Commands for Helm
   helm ls
   helm ls --all-namespaces
 
-6. Uninstall helm with --keep-history  
+**6. Uninstall helm with --keep-history ** 
   
   helm uninstall my-prometheus --keep-history
   helm ls --all-namespaces
   helm ls --all-namespaces -a
   
-7. Upgrde existing helm chart  
+**7. Upgrde existing helm chart  **
 
   helm upgrade my-prometheus-dev prometheus-community/prometheus --version 25.26.0 --namespace dev
   helm ls --all-namespaces
   helm ls --all-namespaces -a
 
-8. Check the helm history
+**8. Check the helm history**
 
   helm history -n dev
   helm history my-prometheus-dev -n dev
   
-9. Rollback the required version
+**9. Rollback the required version**
   
   helm rollback my-prometheus-dev -n dev
   helm history my-prometheus-dev -n dev
