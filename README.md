@@ -71,7 +71,7 @@
   helm install my-prometheus-dev prometheus-community/prometheus --version 25.27.0 --namespace dev
   helm ls
   helm ls --all-namespaces
-
+  
 **6. Uninstall helm with --keep-history ** 
   
   helm uninstall my-prometheus --keep-history
